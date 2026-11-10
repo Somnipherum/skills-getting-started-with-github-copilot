@@ -90,9 +90,9 @@ def test_signup_rejects_duplicate_registration(client):
     )
 
     # Assert
-    assert response.status_code == 400
+    assert response.status_code == 409
     assert response.json() == {
-        "detail": "Student already signed up for this activity"
+        "detail": "Student is already signed up for this activity"
     }
     assert activities[activity_name]["participants"].count(email) == 1
 
